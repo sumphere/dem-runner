@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dem_runner"
+        xmlns:components="clr-namespace:dem_runner.Components"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -12,7 +13,33 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <Style x:Key="TileButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Height" Value="52" />
+        </Style>
+    </Window.Resources>
+    <components:Layout ShowFullHeader="True" ShowLoginButton="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="joinRunner" Style="{StaticResource TileButton}"
+                    Content="Хочу стать бегуном" />
+            <Button x:Name="joinSpectator" Style="{StaticResource TileButton}"
+                    Grid.Column="1"
+                    Content="Хочу стать зрителем" />
+            <Button x:Name="joinSponsor" Style="{StaticResource TileButton}"
+                    Grid.Row="1"
+                    Content="Хочу стать спонсором" />
+            <Button x:Name="moreInfo" Style="{StaticResource TileButton}"
+                    Grid.Column="1" Grid.Row="1"
+                    Content="Хочу узнать больше" />
+        </Grid>
+    </components:Layout>
 </Window>
